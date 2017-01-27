@@ -12,7 +12,7 @@ const googleChartLoader = {
   isLoaded: false,
   isLoading: false,
   initPromise: {},
-  init: function init(packages, version) {
+  init: function init(packages, version, mapsApiKey) {
     debug('init', packages, version);
     if (this.isLoading || this.isLoaded) {
       return this.initPromise;
@@ -20,7 +20,7 @@ const googleChartLoader = {
     this.isLoading = true;
     this.initPromise = new Promise((resolve) => {
       script('https://www.gstatic.com/charts/loader.js', () => {
-        window.google.charts.load(version || 'current', { packages: packages || ['corechart'] });
+        window.google.charts.load(version || 'current', { packages: packages || ['corechart'], mapsApiKey: mapsApiKey });
         window.google.charts.setOnLoadCallback(() => {
           debug('Chart Loaded');
           this.isLoaded = true;

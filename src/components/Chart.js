@@ -45,7 +45,7 @@ export default class Chart extends React.Component {
       return;
     }
     if (this.props.loadCharts) {
-      googleChartLoader.init(this.props.chartPackages, this.props.chartVersion).then(() => {
+      googleChartLoader.init(this.props.chartPackages, this.props.chartVersion, this.props.mapsApiKey).then(() => {
         this.drawChart();
       });
       window.addEventListener('resize', this.onResize);
